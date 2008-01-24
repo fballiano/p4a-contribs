@@ -7,7 +7,7 @@ delete all directories under editor/skins except default and p4a
 
 
 open "editor/filemanager/browser/default/browser.html"
-around line 139
+around line 149
 replace
 --------------
 		<frameset rows="50,*" framespacing="0">
@@ -24,7 +24,7 @@ with
 
 
 open "editor/filemanager/browser/default/connectors/php/config.php"
-around line 27
+around line 34
 replace
 --------------
 $Config['UserFilesPath'] = '/userfiles' ;
@@ -34,34 +34,17 @@ with
 $Config['UserFilesPath'] = P4A_UPLOADS_PATH . '/' . $this->objects[$_REQUEST['_object_id']]->getUploadSubpath();
 --------------
 
-
-
-
-open "editor/filemanager/browser/default/connectors/php/io.php"
-around line 41
+and around line 114
 replace
 --------------
-	$sResourceTypePath = $GLOBALS["UserFilesDirectory"] . strtolower( $resourceType ) . '/' ;
+$Config['FileTypesPath']['File']		= $Config['UserFilesPath'] . 'file/' ;
+$Config['FileTypesAbsolutePath']['File']= ($Config['UserFilesAbsolutePath'] == '') ? '' : $Config['UserFilesAbsolutePath'].'file/' ;
 --------------
 with
 --------------
-	$sResourceTypePath = $GLOBALS["UserFilesDirectory"];
+$Config['FileTypesPath']['File']		= $Config['UserFilesPath'] ;
+$Config['FileTypesAbsolutePath']['File']= ($Config['UserFilesAbsolutePath'] == '') ? '' : $Config['UserFilesAbsolutePath'] ;
 --------------
-
-
-
-
-open "editor/filemanager/browser/default/connectors/php/basexml.php"
-around line 56
-replace
---------------
-	echo '<CurrentFolder path="' . ConvertToXmlAttribute( $currentFolder ) . '" url="' . ConvertToXmlAttribute( GetUrlFromPath( $resourceType, $currentFolder ) ) . '" />' ;
---------------
-with
---------------
-	echo '<CurrentFolder path="' . ConvertToXmlAttribute( $currentFolder ) . '" url="' . ConvertToXmlAttribute( GetUrlFromPath( '', $currentFolder ) ) . '" />' ;
---------------
-
 
 
 
@@ -77,9 +60,10 @@ include('commands.php');
 --------------
 with
 --------------
-include dirname(__FILE__) . '/config.php' ;
-include dirname(__FILE__) . '/util.php' ;
-include dirname(__FILE__) . '/io.php' ;
-include dirname(__FILE__) . '/basexml.php' ;
-include dirname(__FILE__) . '/commands.php' ;
+require dirname(__FILE__) . '/config.php' ;
+require dirname(__FILE__) . '/util.php' ;
+require dirname(__FILE__) . '/io.php' ;
+require dirname(__FILE__) . '/basexml.php' ;
+require dirname(__FILE__) . '/commands.php' ;
+require dirname(__FILE__) . '/phpcompat.php' ;
 --------------
