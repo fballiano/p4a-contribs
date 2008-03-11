@@ -34,6 +34,15 @@ with
 $Config['UserFilesPath'] = P4A_UPLOADS_PATH . '/' . $this->objects[$_REQUEST['_object_id']]->getUploadSubpath();
 --------------
 
+and just after replace
+--------------
+$Config['UserFilesAbsolutePath']
+--------------
+with
+--------------
+$Config['UserFilesAbsolutePath'] = P4A_UPLOADS_DIR . '/' . $this->objects[$_REQUEST['_object_id']]->getUploadSubpath(); ;
+--------------
+
 and around line 114
 replace
 --------------
