@@ -7,7 +7,7 @@ delete all directories under editor/skins except default and p4a
 
 
 open "editor/filemanager/browser/default/browser.html"
-around line 149
+around line 184
 replace
 --------------
 		<frameset rows="50,*" framespacing="0">
@@ -23,7 +23,7 @@ with
 
 
 
-open "editor/filemanager/browser/default/connectors/php/config.php"
+open "editor/filemanager/connectors/php/config.php"
 around line 34
 replace
 --------------
@@ -43,7 +43,7 @@ with
 $Config['UserFilesAbsolutePath'] = P4A_UPLOADS_DIR . '/' . $this->objects[$_REQUEST['_object_id']]->getUploadSubpath(); ;
 --------------
 
-and around line 114
+and around line 125
 replace
 --------------
 $Config['FileTypesPath']['File']		= $Config['UserFilesPath'] . 'file/' ;
@@ -57,7 +57,7 @@ $Config['FileTypesAbsolutePath']['File']= ($Config['UserFilesAbsolutePath'] == '
 
 
 
-open "editor/filemanager/browser/default/connectors/php/connector.php"
+open "editor/filemanager/connectors/php/connector.php"
 around line 27
 replace
 --------------
