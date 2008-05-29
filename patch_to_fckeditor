@@ -76,3 +76,17 @@ require dirname(__FILE__) . '/basexml.php' ;
 require dirname(__FILE__) . '/commands.php' ;
 require dirname(__FILE__) . '/phpcompat.php' ;
 --------------
+
+
+
+
+
+open "editor/fckeditor.html"
+around line 147
+find
+--------------
+document.write( FCKTools.GetStyleHtml( FCKConfig.SkinEditorCSS ) ) ;
+--------------
+add right after
+--------------
+document.write( FCKConfig.P4ACustomCSS ) ;
