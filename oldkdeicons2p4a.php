@@ -92,6 +92,6 @@ foreach ($sizes as $size) {
 			continue;
 		}
 		
-		die("{$size}/$icon does not exist\n");
+		print "{$size}/$icon does not exist\n";
 	}
 }
